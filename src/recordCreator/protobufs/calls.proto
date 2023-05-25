@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message CallRecord {
+    string timestamp = 1;
+    string FullName = 2;
+    string PhoneNumber = 3;
+    string CallType = 4;
+}
+
+message RecordConfirmation {
+    string AckRecord  = 1;
+}
+service RecordCall {
+    rpc RecordIngest (CallRecord) returns (RecordConfirmation);
+}

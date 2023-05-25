@@ -1,3 +1,7 @@
+This project is a simple demonstrating a set of services for a 'call history' service that lets a user see their recent call history.
+
+A golang based GRPC client randomly submits a new 'call record' based on the GoFakeIT library, which is handled by a python based GRPC server, which pushes that record into a BigQuery table
+
 # New Project Template
 
 This repository contains a template that can be used to seed a repository for a
