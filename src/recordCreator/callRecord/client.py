@@ -3,6 +3,10 @@ import logging
 import grpc
 import calls_pb2
 import calls_pb2_grpc
+from faker import Faker
+
+
+fake = Faker()
 
 
 def run():
@@ -13,7 +17,7 @@ def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = calls_pb2_grpc.recorderStub(channel)
         # response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
-        response = stub.ingestRecord(calls_pb2.callerRecord(FullName="Kyle Benson"))
+        response = stub.ingestRecord(calls_pb2.callerRecord(FullName=fake.name(), PhoneNumber=fake.phone_number()))
     print("Greeter client received: " + response.message)
 
 
