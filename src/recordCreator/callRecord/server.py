@@ -27,16 +27,16 @@ import calls_pb2
 import calls_pb2_grpc
 
 
-class ReceiveRecord(calls_pb2_grpc.RecordCallServicer):
+class recorder(calls_pb2_grpc.recorderServicer):
 
-    def RecordIngest(self, request):
-        return calls_pb2.RecordConfirmation(AckRecord='Request received!')
+    def ingestRecord(self, request, context):
+        return calls_pb2.ackRecord(message='Hello, %s!' % request.FullName)
 
 
 def serve():
     port = '50051'
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    calls_pb2_grpc.add_RecordCallServicer_to_server(ReceiveRecord, server)
+    calls_pb2_grpc.add_recorderServicer_to_server(recorder(), server)
     server.add_insecure_port('[::]:' + port)
     server.start()
     print("Server started, listening on " + port)

@@ -5,7 +5,7 @@ import grpc
 import calls_pb2 as calls__pb2
 
 
-class RecordCallStub(object):
+class recorderStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -14,42 +14,42 @@ class RecordCallStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.RecordIngest = channel.unary_unary(
-                '/RecordCall/RecordIngest',
-                request_serializer=calls__pb2.CallRecord.SerializeToString,
-                response_deserializer=calls__pb2.RecordConfirmation.FromString,
+        self.ingestRecord = channel.unary_unary(
+                '/recorder/ingestRecord',
+                request_serializer=calls__pb2.callerRecord.SerializeToString,
+                response_deserializer=calls__pb2.ackRecord.FromString,
                 )
 
 
-class RecordCallServicer(object):
+class recorderServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def RecordIngest(self, request, context):
+    def ingestRecord(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_RecordCallServicer_to_server(servicer, server):
+def add_recorderServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'RecordIngest': grpc.unary_unary_rpc_method_handler(
-                    servicer.RecordIngest,
-                    request_deserializer=calls__pb2.CallRecord.FromString,
-                    response_serializer=calls__pb2.RecordConfirmation.SerializeToString,
+            'ingestRecord': grpc.unary_unary_rpc_method_handler(
+                    servicer.ingestRecord,
+                    request_deserializer=calls__pb2.callerRecord.FromString,
+                    response_serializer=calls__pb2.ackRecord.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'RecordCall', rpc_method_handlers)
+            'recorder', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class RecordCall(object):
+class recorder(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def RecordIngest(request,
+    def ingestRecord(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class RecordCall(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/RecordCall/RecordIngest',
-            calls__pb2.CallRecord.SerializeToString,
-            calls__pb2.RecordConfirmation.FromString,
+        return grpc.experimental.unary_unary(request, target, '/recorder/ingestRecord',
+            calls__pb2.callerRecord.SerializeToString,
+            calls__pb2.ackRecord.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

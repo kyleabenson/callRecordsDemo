@@ -13,17 +13,17 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0b\x63\x61lls.proto\"X\n\nCallRecord\x12\x11\n\ttimestamp\x18\x01 \x01(\t\x12\x10\n\x08\x46ullName\x18\x02 \x01(\t\x12\x13\n\x0bPhoneNumber\x18\x03 \x01(\t\x12\x10\n\x08\x43\x61llType\x18\x04 \x01(\t\"\'\n\x12RecordConfirmation\x12\x11\n\tAckRecord\x18\x01 \x01(\t2>\n\nRecordCall\x12\x30\n\x0cRecordIngest\x12\x0b.CallRecord\x1a\x13.RecordConfirmationb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0b\x63\x61lls.proto\" \n\x0c\x63\x61llerRecord\x12\x10\n\x08\x46ullName\x18\x01 \x01(\t\"\x1c\n\tackRecord\x12\x0f\n\x07message\x18\x01 \x01(\t25\n\x08recorder\x12)\n\x0cingestRecord\x12\r.callerRecord\x1a\n.ackRecordb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'calls_pb2', globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _CALLRECORD._serialized_start=15
-  _CALLRECORD._serialized_end=103
-  _RECORDCONFIRMATION._serialized_start=105
-  _RECORDCONFIRMATION._serialized_end=144
-  _RECORDCALL._serialized_start=146
-  _RECORDCALL._serialized_end=208
+  _CALLERRECORD._serialized_start=15
+  _CALLERRECORD._serialized_end=47
+  _ACKRECORD._serialized_start=49
+  _ACKRECORD._serialized_end=77
+  _RECORDER._serialized_start=79
+  _RECORDER._serialized_end=132
 # @@protoc_insertion_point(module_scope)
